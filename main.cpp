@@ -36,89 +36,7 @@ int main(){
 		cin>>opcMenu;
 		switch(opcMenu){
 			case 1:
-			cout<<"Menú agregar";
-			cout<<"1. Usuario";
-			cout<<"2. Cliente";
-			cout<<"3. Personal";
-			cout<<"4. Administrador";
-			cout<<"5. Chef";
-			cout<<"6. Lavaplatos";
-			cout<<"7. Mesero";
-			int opcAgregar;
-			cout<<"Ingrese la opción: ";
-			cin>>opcAgregar;
-			switch(opcAgregar){
-				case 1:
-				string username;
-				cout<<"Ingrese username: ";
-				cin>>username;
-				string password;
-				cout<<"Ingrese password: ";
-				cin>>password;
-				int edad;
-				cout<<"Ingrese edad: ";
-				cin>>edad;
-				string id;
-				cout<<"Ingrese id: ";
-				cin>>id;
-				string telefono;
-				cout<<"Ingrese telefono: ";
-				cin>>telefono;
-				Usuario temporal(username,password,edad,id,telefono,);
-				vUsuario.push_back(temporal);
-				break;
-				case 2:
-				string direccion;
-				cout<<"Ingrese direccion: ";
-				cin>>direccion;
-				int estrellas;
-				cout<<"Ingrese estrellas: ";
-				cin>>estrellas;
-				Cliente temporal(direccionestrellas);
-				vCliente.push_back(temporal);
-				break;
-				case 3:
-				int aniocontratado;
-				cout<<"Ingrese aniocontratado: ";
-				cin>>aniocontratado;
-				Personal temporal(aniocontratado,);
-				vPersonal.push_back(temporal);
-				break;
-				case 4:
-				int contratados;
-				cout<<"Ingrese contratados: ";
-				cin>>contratados;
-				int despedidos;
-				cout<<"Ingrese despedidos: ";
-				cin>>despedidos;
-				Administrador temporal(contratados,despedidos,);
-				vAdministrador.push_back(temporal);
-				break;
-				case 5:
-				string platillofavorito;
-				cout<<"Ingrese platillofavorito: ";
-				cin>>platillofavorito;
-				int rating;
-				cout<<"Ingrese rating: ";
-				cin>>rating;
-				Chef temporal(platillofavorito,rating,);
-				vChef.push_back(temporal);
-				break;
-				case 6:
-				double motivacion;
-				cout<<"Ingrese motivacion: ";
-				cin>>motivacion;
-				Lavaplatos temporal(motivacion,);
-				vLavaplatos.push_back(temporal);
-				break;
-				case 7:
-				string platillos;
-				cout<<"Ingrese platillos: ";
-				cin>>platillos;
-				Mesero temporal(platillos,);
-				vMesero.push_back(temporal);
-				break;
-			}
+			
 			break;
 			case 2:
 			cout<<"Menú listar";
@@ -185,4 +103,208 @@ int main(){
 			break;
 		}
 	}while(opcMenu!=8);
+}
+
+vector<Usuario> agregarUsuario(){
+	cout<<"Menú agregar";
+	cout<<"1. Usuario";
+	cout<<"2. Cliente";
+	cout<<"3. Personal";
+	cout<<"4. Administrador";
+	cout<<"5. Chef";
+	cout<<"6. Lavaplatos";
+	cout<<"7. Mesero";
+	int opcAgregar;
+	cout<<"Ingrese la opción: ";
+	cin>>opcAgregar;
+	switch(opcAgregar){
+		case 1:{
+			string username;
+			cout<<"Ingrese username: ";
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cin>>telefono;
+			Usuario temporal(username,nombre,password,edad,id,telefono);
+			return temporal;
+			break;
+		}
+		case 2:{
+			string username;
+			cout<<"Ingrese username: ";
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cin>>telefono;
+			string direccion;
+			cout<<"Ingrese direccion: ";
+			cin>>direccion;
+			int estrellas;
+			cout<<"Ingrese estrellas: ";
+			cin>>estrellas;
+			Cliente temporal(username,nombre,password,edad,id,telefono,direccionestrellas);
+			return temporal;
+			break;
+		}
+		case 3:{
+			string username;
+			cout<<"Ingrese username: ";
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cin>>telefono;
+			int aniocontratado;
+			cout<<"Ingrese aniocontratado: ";
+			cin>>aniocontratado;
+			Personal temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo);
+			return temporal;
+			break;
+		}
+		case 4:{
+			string username;
+			cout<<"Ingrese username: ";
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cin>>telefono;
+			int contratados;
+			cout<<"Ingrese contratados: ";
+			cin>>contratados;
+			int despedidos;
+			cout<<"Ingrese despedidos: ";
+			cin>>despedidos;
+			Administrador temporal(username,nombre,password,edad,id,telefono,contratados,despedidos);
+			return temporal;
+			break;
+		}
+		case 5:{
+			string username;
+			cout<<"Ingrese username: ";
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cin>>telefono;
+			string platillofavorito;
+			cout<<"Ingrese platillofavorito: ";
+			cin>>platillofavorito;
+			int rating;
+			cout<<"Ingrese rating: ";
+			cin>>rating;
+			Chef temporal(username,nombre,password,edad,id,telefono,platillofavorito,rating);
+			return temporal;
+			break;
+		}
+		case 6:{
+			string username;
+			cout<<"Ingrese username: ";
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cin>>telefono;
+			double motivacion;
+			cout<<"Ingrese motivacion: ";
+			cin>>motivacion;
+			Lavaplatos temporal(username,nombre,password,edad,id,telefono,motivacion);
+			return temporal;
+			break;
+		}
+		case 7:{
+			string username;
+			cout<<"Ingrese username: ";
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cin>>telefono;
+			string platillos;
+			cout<<"Ingrese platillos: ";
+			cin>>platillos;
+			Mesero temporal(username,nombre,password,edad,id,telefono,platillos);
+			return temporal;
+			break;
+		}
+	}
 }

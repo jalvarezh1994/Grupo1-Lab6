@@ -27,3 +27,11 @@ void Personal::setAnioContratado(int AnioContratado){
 int Personal::getAnioContratado(){
 	return AnioContratado;
 }
+
+double Personal::getSueldo(){
+	return sueldo;
+}
+
+void Personal::setSueldo(double Sueldo){
+	this->Sueldo=Sueldo;
+}

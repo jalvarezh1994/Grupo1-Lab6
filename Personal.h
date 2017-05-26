@@ -16,6 +16,8 @@ class Personal:public Usuario{
         virtual ~Personal();
         int getAnioContratado();
         void setAnioContratado(int);
+        double getSueldo();
+        void setSueldo(double);
 
 };
 #endif
