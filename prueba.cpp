@@ -16,7 +16,7 @@ void promedioClientes(vector<Usuario*>);
 
 int main() {
 	vector<Usuario*> usuarios;
-	usuarios.push_back(new Administrador("admin123", "pass123", 20, "0801182519855", ));
+	//usuarios.push_back(new Administrador("admin123", "pass123", 20, "0801182519855", ));
 	bool seguir = true;
 	cout << "Bienvenido al Restaurante: - Como vos Querras! -." << endl;
 
@@ -100,7 +100,7 @@ int main() {
 								cin >> rating;
 							}
 							temp1 -> setEstrellas(rating);
-							usuarios.at(userM) = temp;
+							usuarios.at(userM) = temp1;
 							cout << "Rating guardado exitosamente!" << endl;
 							promedioClientes(usuarios);
 
@@ -131,7 +131,7 @@ int main() {
 							if (resp4 == 1)
 							{
 								cout << "Cuanta motivacion desea quitarle al lavaplatos?" << endl;
-								int motivacionQ;
+								double motivacionQ;
 								cin >> motivacionQ;
 
 								cout << "A cual empleado le desea gritar?" << endl;
@@ -148,12 +148,14 @@ int main() {
 									cout << "Opcion invalida, ingrese su opcion de nuevo!" << endl;
 									cin >> respB;
 								}
-								usuarios.at(respB) -> setMotivacion(usuarios.at(respB) -> getMotivacion() - motivacionQ);
+								Lavaplatos* tempL = dynamic_cast<Lavaplatos*>(usuarios.at(respB));
+								tempL -> setMotivacion(tempL -> getMotivacion() - motivacionQ);
+								usuarios.at(respB) = tempL; 
 								cout << "Gritada ejecutada exitosamente!" << endl;
 							} else if (resp4 == 2)
 							{
 								cout << "Cuanta motivacion desea darle al lavaplatos?" << endl;
-								int motivacionA;
+								double motivacionA;
 								cin >> motivacionA;
 
 								cout << "A cual empleado le desea agradar?" << endl;
@@ -170,7 +172,9 @@ int main() {
 									cout << "Opcion invalida, ingrese su opcion de nuevo!" << endl;
 									cin >> respB;
 								}
-								usuarios.at(respB) -> setMotivacion(usuarios.at(respB) -> getMotivacion() + motivacionA);
+								Lavaplatos* tempL2 = dynamic_cast<Lavaplatos*>(usuarios.at(respB));
+								tempL2 -> setMotivacion(tempL2 -> getMotivacion() + motivacionA);
+								usuarios.at(respB) = tempL2;
 								cout << "Agradada ejecutada exitosamente!" << endl;
 							} else {
 								seguir2 == false;
@@ -192,7 +196,7 @@ int main() {
 
 							if (resp5 == 1)
 							{
-								if (usuarios.at(userM) -> getMotivacion() <= 25)
+								if (temp4 -> getMotivacion() <= 25)
 								{
 									usuarios.erase(usuarios.begin() + userM);
 									cout << "Lavaplatos se fue del establecimiento." << endl;
@@ -202,17 +206,20 @@ int main() {
 								}
 							} else if (resp5 == 2)
 							{
-								if (usuarios.at(userM) -> getMotivacion() >= 100)
+								if (temp4 -> getMotivacion() >= 100)
 								{
 									cout << "De cuanto sera el aumento del lavaplatos?" << endl;
 									int aumento;
 									cin >> aumento;
-									while (aumento > usuarios.at(userM) -> getSueldo()) {
-										cout << "El aumento no puede ser mayor al saldo actual del lavaplatos, ingrese aumento de nuevo."
+									while (aumento > temp4 -> getSueldo()) {
+										cout << "El aumento no puede ser mayor al saldo actual del lavaplatos, ingrese aumento de nuevo." << endl;
 										cin >> aumento;
 									}
-									usuarios.at(userM) -> setSueldo(usuarios.at(userM) -> getSueldo() + aumento);
+									temp4 -> setSueldo(temp4 -> getSueldo() + aumento);
+									usuarios.at(userM) = temp4;
 									cout << "Aumento aplicado!" << endl;
+								} else {
+									cout << "La motivacion del lavaplatos no es suficientemente alta para pedir aumento" << endl;
 								}
 							} else {
 								seguir2 == false;
@@ -246,11 +253,13 @@ int menu() {
 void promedioClientes(vector<Usuario*> usuarios) {
 	double total;
 	int cont;
+	Cliente* temp;
 	for (int i = 0; i < usuarios.size(); ++i)
 	{
 		if (dynamic_cast<Cliente*>(usuarios.at(i)))
 		{
-			total = total + usuarios.at(i) -> getEstrellas();
+			temp = dynamic_cast<Cliente*>(usuarios.at(i));
+			total = total + (temp -> getEstrellas());
 			cont++;
 		}
 	}
