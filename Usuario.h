@@ -16,6 +16,7 @@ class Usuario{
     public:
         Usuario(string,string,int,string,string);
         Usuario();
+        virtual ~Usuario();
         string getUsername();
         void setUsername(string);
 
@@ -30,6 +31,7 @@ class Usuario{
 
         string getTelefono();
         void setTelefono(string);
+       // virtual string toString();
 };
 
 #endif

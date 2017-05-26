@@ -24,7 +24,7 @@ int main() {
 
 		if (resp1 == 1)
 		{
-			boolean user = false, pass = false, enter = false, enter2 = false;
+			bool user = false, pass = false, enter = false, enter2 = false;
 			int userM;
 			while (enter == false) {
 				cout << "Ingrese el nombre de usuario: " << endl;
@@ -112,9 +112,9 @@ int main() {
 						{
 							Lavaplatos* temp4 = dynamic_cast<Lavaplatos*>(usuarios.at(userM));
 
-						} else if (dynamic_cast<Meseros*>(usuarios.at(userM)))
+						} else if (dynamic_cast<Mesero*>(usuarios.at(userM)))
 						{
-							Meseros* temp5 = dynamic_cast<Meseros*>(usuarios.at(userM));
+							Mesero* temp5 = dynamic_cast<Mesero*>(usuarios.at(userM));
 						}
 					}
 				}

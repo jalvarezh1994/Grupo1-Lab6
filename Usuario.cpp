@@ -12,6 +12,9 @@ Usuario::Usuario(){
 
 }
 
+Usuario::~Usuario() {}
+
+
 void Usuario::setUsername(string Username){
  this-> Username=Username;
 }

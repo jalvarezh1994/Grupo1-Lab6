@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
 #include "Usuario.h"
+#include "Personal.h"
 
 using namespace std;
 
 #ifndef MESERO_H
 #define MESERO_H
+
 class Mesero:public Personal{
     protected:
         string Platillos;

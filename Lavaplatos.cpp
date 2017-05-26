@@ -1,4 +1,5 @@
 #include "Lavaplatos.h"
+#include "Personal.h"
 
 Lavaplatos::Lavaplatos(string Username,string Password,int Edad,string Id,string Telefono,int AnioContratado,double Motivacion){
     this->Motivacion=Motivacion;

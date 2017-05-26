@@ -6,6 +6,7 @@ using namespace std;
 
 #ifndef LAVAPLATOS_H
 #define LAVAPLATOS_H
+
 class Lavaplatos:public Personal{
     protected:
         double Motivacion;
