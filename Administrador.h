@@ -1,16 +1,19 @@
 #include <iostream>
 #include <string>
+#include "Usuario.h"
+#include "Personal.h"
 
 using namespace std;
 
 #ifndef ADMINISTRADOR_H
 #define ADMINISTRADOR_H
-class Administrador{
+
+class Administrador:public Personal{
     protected:
         int Contratados;
         int Despedidos;
     public:
-        Administrador(int,int);
+        Administrador(string,string,int,string,string,int,int,int);
         Administrador();
         int getContratados();
         void setContratados(int);

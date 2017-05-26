@@ -5,6 +5,7 @@ using namespace std;
 
 #ifndef USUARIO_H
 #define USUARIO_H
+
 class Usuario{
     protected:
         string Username;
@@ -29,6 +30,6 @@ class Usuario{
 
         string getTelefono();
         void setTelefono(string);
-
 };
+
 #endif
