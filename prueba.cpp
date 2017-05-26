@@ -213,6 +213,8 @@ int main() {
 									}
 									usuarios.at(userM) -> setSueldo(usuarios.at(userM) -> getSueldo() + aumento);
 									cout << "Aumento aplicado!" << endl;
+								} else {
+									cout << "La motivacion del lavaplatos no es suficientemente alta para pedir aumento" << endl;
 								}
 							} else {
 								seguir2 == false;
