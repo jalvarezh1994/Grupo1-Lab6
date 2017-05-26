@@ -29,7 +29,7 @@ int Personal::getAnioContratado(){
 }
 
 double Personal::getSueldo(){
-	return sueldo;
+	return Sueldo;
 }
 
 void Personal::setSueldo(double Sueldo){
