@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Usuario.h"
 #include "Personal.h"
 
@@ -9,13 +10,18 @@ using namespace std;
 #define MESERO_H
 
 class Mesero:public Personal{
-    protected:
+    private:
         vector<string> Platillos;
     public:
         Mesero(string,string,string,int,string,string,int,double);
         Mesero();
         virtual ~Mesero();
-        string getPlatillos();
-        void setPlatillos(string);
+
+        void setPlatillo(string);
+        void entregarPlatillo(int);
+        void entregarTodosP();
+        int tamano();
+
+        void imprimirPlatillos();
 };
 #endif

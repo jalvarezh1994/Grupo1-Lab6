@@ -1,7 +1,6 @@
 #include "Mesero.h"
 
 Mesero::Mesero(string Username,string Nombre,string Password,int Edad,string Id,string Telefono,int AnioContratado,double Sueldo){
-    this->Platillos=Platillos;
     this->AnioContratado=AnioContratado;
 	this->Username=Username;
 	this->Password=Password;
@@ -20,10 +19,31 @@ Mesero::~Mesero(){
 
 }
 
-void Mesero::setPlatillos(string Platillos){
-   this-> Platillos=Platillos;
+void Mesero::setPlatillo(string platillo){
+   this-> Platillos.push_back(platillo);
+   cout << "Plato agregado exitosamente!" << endl;
 }
 
-string Mesero::getPlatillos(){
-   return Platillos;
+void Mesero::entregarPlatillo(int pos) {
+	Platillos.erase(Platillos.begin() + pos);
+	cout << "Platillo entregado exitosamente!" << endl;
+}
+
+void Mesero::entregarTodosP() {
+	for (int i = 0; i < Platillos.size(); ++i)
+	{
+		Platillos.erase(Platillos.begin() + i);
+	}
+	cout << "Platillos entregado exitosamente!" << endl;
+}
+
+void Mesero::imprimirPlatillos() {
+	for (int i = 0; i < Platillos.size(); ++i)
+	{
+		cout << i << ") " << Platillos.at(i) << endl;
+	}
+}
+
+int Mesero::tamano() {
+	return Platillos.size();
 }
