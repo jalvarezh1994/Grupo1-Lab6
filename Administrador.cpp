@@ -2,7 +2,7 @@
 #include "Usuario.h"
 #include "Personal.h"
 
-Administrador::Administrador(string Username,string Password,int Edad,string Id,string Telefono, int AnioContratado, int Contratados,int Despedidos){
+Administrador::Administrador(string Username,string Nombre,string Password,int Edad,string Id,string Telefono, int AnioContratado,double Sueldo, int Contratados,int Despedidos){
     this->Contratados=Contratados;
     this->Despedidos=Despedidos;
     this->Username=Username;
@@ -11,9 +11,15 @@ Administrador::Administrador(string Username,string Password,int Edad,string Id,
     this->Id=Id;
     this->Telefono=Telefono;
     this->AnioContratado=AnioContratado;
+    this->Sueldo=Sueldo;
+    this->Nombre=Nombre;
 }
 
 Administrador::Administrador(){
+
+}
+
+Administrador::~Administrador(){
 
 }
 

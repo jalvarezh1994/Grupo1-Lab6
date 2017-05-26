@@ -1,16 +1,22 @@
 #include "Personal.h"
 #include "Usuario.h"
 
-Personal::Personal(string Username,string Password,int Edad,string Id,string Telefono,int AnioContratado){
+Personal::Personal(string Username,string Nombre,string Password,int Edad,string Id,string Telefono,int AnioContratado,double Sueldo){
 	this->AnioContratado=AnioContratado;
 	this->Username=Username;
 	this->Password=Password;
 	this->Edad=Edad;
 	this->Id=Id;
 	this->Telefono=Telefono;
+	this->Sueldo=Sueldo;
+	this->Nombre=Nombre;
 }
 
 Personal::Personal(){
+
+}
+
+Personal::~Personal(){
 
 }
 

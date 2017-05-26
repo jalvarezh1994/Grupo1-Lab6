@@ -1,6 +1,6 @@
 #include "Mesero.h"
 
-Mesero::Mesero(string Username,string Password,int Edad,string Id,string Telefono,int AnioContratado,string Platillos){
+Mesero::Mesero(string Username,string Nombre,string Password,int Edad,string Id,string Telefono,int AnioContratado,double Sueldo,string Platillos){
     this->Platillos=Platillos;
     this->AnioContratado=AnioContratado;
 	this->Username=Username;
@@ -8,11 +8,19 @@ Mesero::Mesero(string Username,string Password,int Edad,string Id,string Telefon
 	this->Edad=Edad;
 	this->Id=Id;
 	this->Telefono=Telefono;
+	this->Sueldo=Sueldo;
+	this->Nombre=Nombre;
 }
 
 Mesero::Mesero(){
 
-}void Mesero::setPlatillos(string Platillos){
+}
+
+Mesero::~Mesero(){
+
+}
+
+void Mesero::setPlatillos(string Platillos){
    this-> Platillos=Platillos;
 }
 

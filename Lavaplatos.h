@@ -11,7 +11,7 @@ class Lavaplatos:public Personal{
     protected:
         double Motivacion;
     public:
-        Lavaplatos(string,string,int,string,string,int,double);
+        Lavaplatos(string,string,string,int,string,string,int,double,double);
         Lavaplatos();
         double getMotivacion();
         void setMotivacion(double);

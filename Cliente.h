@@ -11,8 +11,9 @@ class Cliente:public Usuario{
         string Direccion;
         int Estrellas;
     public:
-        Cliente(string,string,int,string,string,string,int);
+        Cliente(string,string,string,int,string,string,string,int);
         Cliente();
+        virtual ~Cliente();
         string getDireccion();
         void setDireccion(string);
 

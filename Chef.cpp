@@ -1,7 +1,7 @@
 #include "Chef.h"
 #include "Personal.h"
 
-Chef::Chef(string Username,string Password,int Edad,string Id,string Telefono,int AnioContratado,string PlatilloFavorito,int Rating){
+Chef::Chef(string Username,string Nombre,string Password,int Edad,string Id,string Telefono,int AnioContratado,double Sueldo,string PlatilloFavorito,int Rating){
 	this->PlatilloFavorito=PlatilloFavorito;
 	this->Rating=Rating;
 	this->Username=Username;
@@ -9,9 +9,15 @@ Chef::Chef(string Username,string Password,int Edad,string Id,string Telefono,in
 	this->Edad=Edad;
 	this->Id=Id;
 	this->Telefono=Telefono;
+	this->Nombre=Nombre;
+	this->Sueldo=Sueldo;
 }
 
 Chef::Chef(){
+
+}
+
+Chef::~Chef(){
 
 }
 

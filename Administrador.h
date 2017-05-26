@@ -13,8 +13,9 @@ class Administrador:public Personal{
         int Contratados;
         int Despedidos;
     public:
-        Administrador(string,string,int,string,string,int,int,int);
+        Administrador(string,string,string,int,string,string,int,double,int,int);
         Administrador();
+        ~Administrador();
         int getContratados();
         void setContratados(int);
 

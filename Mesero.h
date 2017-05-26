@@ -12,8 +12,9 @@ class Mesero:public Personal{
     protected:
         string Platillos;
     public:
-        Mesero(string,string,int,string,string,int,string);
+        Mesero(string,string,string,int,string,string,int,double,string);
         Mesero();
+        virtual ~Mesero();
         string getPlatillos();
         void setPlatillos(string);
 };

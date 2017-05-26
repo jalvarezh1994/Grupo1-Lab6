@@ -13,8 +13,9 @@ class Usuario{
         int Edad;
         string Id;
         string Telefono;
+        string Nombre;
     public:
-        Usuario(string,string,int,string,string);
+        Usuario(string,string,string,int,string,string);
         Usuario();
         virtual ~Usuario();
         string getUsername();
@@ -31,6 +32,9 @@ class Usuario{
 
         string getTelefono();
         void setTelefono(string);
+
+        string getNombre();
+        void setNombre(string);
        // virtual string toString();
 };
 

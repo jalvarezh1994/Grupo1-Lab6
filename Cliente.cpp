@@ -1,7 +1,7 @@
 #include "Cliente.h"
 #include "Usuario.h"
 
-Cliente::Cliente(string Username,string Password,int Edad,string Id,string Telefono,string Direccion,int Estrellas){
+Cliente::Cliente(string Username,string Nombre,string Password,int Edad,string Id,string Telefono,string Direccion,int Estrellas){
 	this->Direccion=Direccion;
 	this->Estrellas=Estrellas;
 	this->Username=Username;
@@ -9,9 +9,14 @@ Cliente::Cliente(string Username,string Password,int Edad,string Id,string Telef
 	this->Edad=Edad;
 	this->Id=Id;
 	this->Telefono=Telefono;
+	this->Nombre=Nombre;
 }
 
 Cliente::Cliente(){
+
+}
+
+Cliente::~Cliente(){
 
 }
 

@@ -11,8 +11,9 @@ class Chef:public Personal{
         string PlatilloFavorito;
         int Rating;
     public:
-        Chef(string,string,int,string,string,int,string,int);
+        Chef(string,string,string,int,string,string,int,double,string,int);
         Chef();
+        virtual ~Chef();
         string getPlatilloFavorito();
         void setPlatilloFavorito(string);
 
