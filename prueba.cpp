@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <typeinfo>
 #include "Usuario.h"
 #include "Cliente.h"
 #include "Personal.h"
@@ -16,7 +17,7 @@ void promedioClientes(vector<Usuario*>);
 
 int main() {
 	vector<Usuario*> usuarios;
-	//usuarios.push_back(new Administrador("admin123", "pass123", 20, "0801182519855", ));
+	usuarios.push_back(new Administrador("admin123", "Pedro" ,"pass123", 20, "0801182519855", "99558844", 1992, 5000, 15, 6));
 	bool seguir = true;
 	cout << "Bienvenido al Restaurante: - Como vos Querras! -." << endl;
 
@@ -219,7 +220,7 @@ int main() {
 									usuarios.at(userM) = temp4;
 									cout << "Aumento aplicado!" << endl;
 								} else {
-									cout << "La motivacion del lavaplatos no es suficientemente alta para pedir aumento" << endl;
+									cout << "La motivacion del lavaplatos no es suficientemente alta para pedir aumento." << endl;
 								}
 							} else {
 								seguir2 == false;
@@ -228,6 +229,44 @@ int main() {
 						} else if (dynamic_cast<Mesero*>(usuarios.at(userM)))
 						{
 							Mesero* temp5 = dynamic_cast<Mesero*>(usuarios.at(userM));
+							cout << "Que desea hacer?" << endl;
+							cout << "1) Agregar Ṕlatillo" << endl;
+							cout << "2) Entregar Platillo" << endl;
+							cout << "3) Entregar todos los platillos" << endl;
+							cout << "4) Salir" << endl;
+							int resp6;
+							cin >> resp6;
+							while (resp6 < 1 || resp6 > 4) {
+								cout << "Opcion invalida, ingrese su opcion de nuevo." << endl;
+								cin >> resp6;
+							}
+
+							if (resp6 == 1)
+							{
+								cout << "Ingrese el nombre del platillo: " << endl;
+								string nombreP;
+								cin >> nombreP;
+								temp5 -> setPlatillo(nombreP);
+								usuarios.at(userM) = temp5;
+							} else if (resp6 == 2)
+							{
+								cout << "Cual platillo desea servir?" << endl;
+								temp5 -> imprimirPlatillos();
+								int resP;
+								cin >> resP;
+								while (resP < 1 || resP > temp5 -> tamano()) {
+									cout << "Numero invalido, ingrese su opcion de nuevo!" << endl;
+									cin >> resP;
+								}
+								temp5 -> entregarPlatillo(resP);
+								usuarios.at(userM) = temp5;
+							} else if (resp6 == 3)
+							{
+								temp5 -> entregarTodosP();
+								usuarios.at(userM) = temp5;
+							} else {
+								seguir2 == false;
+							}
 						}
 					}
 				}
