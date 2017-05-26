@@ -105,7 +105,7 @@ int main(){
 	}while(opcMenu!=8);
 }
 
-vector<Usuario> agregarUsuario(){
+Usuario agregarUsuario(){
 	cout<<"Menú agregar";
 	cout<<"1. Usuario";
 	cout<<"2. Cliente";
@@ -166,7 +166,7 @@ vector<Usuario> agregarUsuario(){
 			int estrellas;
 			cout<<"Ingrese estrellas: ";
 			cin>>estrellas;
-			Cliente temporal(username,nombre,password,edad,id,telefono,direccionestrellas);
+			Cliente temporal(username,nombre,password,edad,id,telefono,direccion,estrellas);
 			return temporal;
 			break;
 		}
@@ -224,6 +224,11 @@ vector<Usuario> agregarUsuario(){
 			int despedidos;
 			cout<<"Ingrese despedidos: ";
 			cin>>despedidos;
+			cout<<"Ingrese aniocontratado: ";
+			cin>>aniocontratado;
+			double sueldo;
+			cout<<"Ingrese sueldo: ";
+			cin>>sueldo;
 			Administrador temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo,contratados,despedidos);
 			return temporal;
 			break;
@@ -248,6 +253,11 @@ vector<Usuario> agregarUsuario(){
 			cout<<"Ingrese telefono: ";
 			cin>>telefono;
 			string platillofavorito;
+			cout<<"Ingrese aniocontratado: ";
+			cin>>aniocontratado;
+			double sueldo;
+			cout<<"Ingrese sueldo: ";
+			cin>>sueldo;
 			cout<<"Ingrese platillofavorito: ";
 			cin>>platillofavorito;
 			int rating;
@@ -277,6 +287,11 @@ vector<Usuario> agregarUsuario(){
 			cout<<"Ingrese telefono: ";
 			cin>>telefono;
 			double motivacion;
+			cout<<"Ingrese aniocontratado: ";
+			cin>>aniocontratado;
+			double sueldo;
+			cout<<"Ingrese sueldo: ";
+			cin>>sueldo;
 			cout<<"Ingrese motivacion: ";
 			cin>>motivacion;
 			Lavaplatos temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo,motivacion);
@@ -303,11 +318,35 @@ vector<Usuario> agregarUsuario(){
 			cout<<"Ingrese telefono: ";
 			cin>>telefono;
 			string platillos;
+			cout<<"Ingrese aniocontratado: ";
+			cin>>aniocontratado;
+			double sueldo;
+			cout<<"Ingrese sueldo: ";
+			cin>>sueldo;
 			cout<<"Ingrese platillos: ";
 			cin>>platillos;
 			Mesero temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo,platillos);
 			return temporal;
 			break;
+		}
+	}
+}
+
+vector<Usuario*> eliminarUsuario(vector<Usuario*> usuarios){
+	int i;
+	cout<<"Ingrese la posición del usuario que desea eliminar"<<endl;
+	cin>>i;
+	usuarios.erase(usuarios.begin()+i);
+	return usuarios;
+}
+
+void guardarEnarchivo(vector<Usuario> Usuarios){
+	//Clientes
+	for (int i = 0; i < count; ++i)
+	{
+		if (*(Usuarios[i])
+		{
+			/* code */
 		}
 	}
 }

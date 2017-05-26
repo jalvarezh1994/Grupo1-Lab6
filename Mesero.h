@@ -10,9 +10,9 @@ using namespace std;
 
 class Mesero:public Personal{
     protected:
-        string Platillos;
+        vector<string> Platillos;
     public:
-        Mesero(string,string,string,int,string,string,int,double,string);
+        Mesero(string,string,string,int,string,string,int,double);
         Mesero();
         virtual ~Mesero();
         string getPlatillos();
