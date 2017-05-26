@@ -192,6 +192,9 @@ vector<Usuario> agregarUsuario(){
 			int aniocontratado;
 			cout<<"Ingrese aniocontratado: ";
 			cin>>aniocontratado;
+			double sueldo;
+			cout<<"Ingrese sueldo: ";
+			cin>>sueldo;
 			Personal temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo);
 			return temporal;
 			break;
@@ -221,7 +224,7 @@ vector<Usuario> agregarUsuario(){
 			int despedidos;
 			cout<<"Ingrese despedidos: ";
 			cin>>despedidos;
-			Administrador temporal(username,nombre,password,edad,id,telefono,contratados,despedidos);
+			Administrador temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo,contratados,despedidos);
 			return temporal;
 			break;
 		}
@@ -250,7 +253,7 @@ vector<Usuario> agregarUsuario(){
 			int rating;
 			cout<<"Ingrese rating: ";
 			cin>>rating;
-			Chef temporal(username,nombre,password,edad,id,telefono,platillofavorito,rating);
+			Chef temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo,platillofavorito,rating);
 			return temporal;
 			break;
 		}
@@ -276,7 +279,7 @@ vector<Usuario> agregarUsuario(){
 			double motivacion;
 			cout<<"Ingrese motivacion: ";
 			cin>>motivacion;
-			Lavaplatos temporal(username,nombre,password,edad,id,telefono,motivacion);
+			Lavaplatos temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo,motivacion);
 			return temporal;
 			break;
 		}
@@ -302,7 +305,7 @@ vector<Usuario> agregarUsuario(){
 			string platillos;
 			cout<<"Ingrese platillos: ";
 			cin>>platillos;
-			Mesero temporal(username,nombre,password,edad,id,telefono,platillos);
+			Mesero temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo,platillos);
 			return temporal;
 			break;
 		}
