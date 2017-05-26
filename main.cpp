@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <typeinfo>
+#include <fstream>
 #include "Usuario.h"
 #include "Cliente.h"
 #include "Personal.h"
@@ -340,13 +342,29 @@ vector<Usuario*> eliminarUsuario(vector<Usuario*> usuarios){
 	return usuarios;
 }
 
-void guardarEnarchivo(vector<Usuario> Usuarios){
+void guardarArchivo(vector<Usuario> Usuarios){
 	//Clientes
-	for (int i = 0; i < count; ++i)
+	string Clientes="";
+	string Administradores="";
+	string Chefs="";
+	string Lavaplatos="";
+	string Meseros="";
+	for (int i = 0; i < Usuarios.size(); ++i)
 	{
-		if (*(Usuarios[i])
+		if (typeid((*(Usuarios[i])).name()).compare(typeid(Cliente).name())==0)
 		{
-			/* code */
+			Clientes+=Usuarios[i]->getUsername()+" ";
+			Clientes+=Usuarios[i]->getNombre()+" ";
+			Clientes+=Usuarios[i]->getPassword()+" ";
+			Clientes+=Usuarios[i]->getEdad()+" ";
 		}
 	}
+	ofstream archivo;
+	string nombreArchivo;
+	archivo.open("prueba.txt",ios::out);
+	if (archivo.fail()){
+		cout<<"No se puede abrir el archivo";
+		exit(1);
+	}
+	archivo<<Clientes;
 }
