@@ -22,6 +22,7 @@ double decrementarS(double);
 vector<int> menorS(vector<Usuario*>);
 vector<int> mayorS(vector<Usuario*>);
 void guardarArchivo(vector<Usuario*>);
+double promedio(vector<Usuario*>);
 
 int main() {
 	vector<Usuario*> usuarios;
@@ -224,7 +225,8 @@ int main() {
 								}
 							} else if (resp3 == 6)
 							{
-								/* code */
+								double promedioF = promedio(usuarios);
+								cout << "El promedio del sueldo de todo el personal es de: " << promedioF << endl;
 							} else {
 								seguir2 = false;
 							}
@@ -771,6 +773,23 @@ vector<int> mayorS(vector<Usuario*> usuarios) {
 	}
 
 	return mayores;
+}
+
+double promedio(vector<Usuario*> Usuarios){
+	int cantPersonal=0;
+	double suma=0;
+	double promedio;
+	for (int i = 0; i < Usuarios.size(); ++i)
+	{
+		if (dynamic_cast<Personal*>(Usuarios.at(i)))
+		{	
+			Personal* temp=dynamic_cast<Personal*>(Usuarios.at(i));
+			suma+=temp -> getSueldo();
+			cantPersonal++;
+		}
+	}
+	promedio=suma/cantPersonal;
+	return promedio;
 }
 
 void guardarArchivo(vector<Usuario*> Usuarios){
