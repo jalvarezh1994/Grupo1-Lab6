@@ -3,8 +3,16 @@
 Usuario::Usuario(string Username,string Nombre,string Password,int Edad,string Id,string Telefono){
 	this->Username=Username;
 	this->Password=Password;
+	while (Edad < 18) {
+		cout << "Edad invalida, ingrese edad de nuevo!" << endl;
+		cin >> Edad;
+	}
 	this->Edad=Edad;
 	this->Id=Id;
+	while (Telefono.size() < 8) {
+		cout << "Telefono invalido, ingrese telefono otra vez!" << endl;
+		cin >> Telefono;
+	}
 	this->Telefono=Telefono;
 	this->Nombre=Nombre;
 }
@@ -43,6 +51,10 @@ string Usuario::getPassword(){
 }
 
 void Usuario::setEdad(int Edad){
+	while (Edad < 18) {
+		cout << "Edad invalida, ingrese edad de nuevo!" << endl;
+		cin >> Edad;
+	}
 	this-> Edad=Edad;
 }
 
@@ -59,6 +71,10 @@ string Usuario::getId(){
 }
 
 void Usuario::setTelefono(string Telefono){
+	while (Telefono.size() < 8) {
+		cout << "Telefono invalido, ingrese telefono otra vez!" << endl;
+		cin >> Telefono;
+	}
 	this-> Telefono=Telefono;
 }
 

@@ -15,7 +15,7 @@ using namespace std;
 
 int menu();
 void promedioClientes(vector<Usuario*>);
-Usuario agregarUsuario();
+Usuario agregarUsuario(vector<Usuario*>);
 vector<Usuario*> eliminarUsuario(vector<Usuario*>, int);
 double aumentarS(double);
 double decrementarS(double);
@@ -23,6 +23,7 @@ vector<int> menorS(vector<Usuario*>);
 vector<int> mayorS(vector<Usuario*>);
 void guardarArchivo(vector<Usuario*>);
 double promedio(vector<Usuario*>);
+bool existeIdentidad(vector<Usuario*>, string);
 
 int main() {
 	vector<Usuario*> usuarios;
@@ -138,7 +139,7 @@ int main() {
 
 							if (resp3 == 1)
 							{
-								Usuario a = agregarUsuario();
+								Usuario a = agregarUsuario(usuarios);
 								Usuario* ptra = new Usuario();
 								*ptra = a;
 								usuarios.push_back(ptra);
@@ -254,14 +255,14 @@ int main() {
 								cout << "A cual empleado le desea gritar?" << endl;
 								for (int i = 0; i < usuarios.size(); ++i)
 								{
-									if (i != userM)
+									if (dynamic_cast<Lavaplatos*>(usuarios.at(i)))
 									{
 										cout << i << ") " << usuarios.at(i) -> getNombre();
 									}
 								}
 								int respB;
 								cin >> respB;
-								while (respB < 0 || respB > usuarios.size() || respB == userM) {
+								while ((respB < 0 || respB > usuarios.size() || respB == userM) && dynamic_cast<Lavaplatos*>(usuarios.at(respB))) {
 									cout << "Opcion invalida, ingrese su opcion de nuevo!" << endl;
 									cin >> respB;
 								}
@@ -278,14 +279,14 @@ int main() {
 								cout << "A cual empleado le desea agradar?" << endl;
 								for (int i = 0; i < usuarios.size(); ++i)
 								{
-									if (i != userM)
+									if (dynamic_cast<Lavaplatos*>(usuarios.at(i)))
 									{
 										cout << i << ") " << usuarios.at(i) -> getNombre();
 									}
 								}
 								int respB;
 								cin >> respB;
-								while (respB < 0 || respB > usuarios.size() || respB == userM) {
+								while ((respB < 0 || respB > usuarios.size() || respB == userM) && dynamic_cast<Lavaplatos*>(usuarios.at(respB)) ) {
 									cout << "Opcion invalida, ingrese su opcion de nuevo!" << endl;
 									cin >> respB;
 								}
@@ -423,7 +424,7 @@ void promedioClientes(vector<Usuario*> usuarios) {
 	cout << "El numero de estrellas del restaurante es de: " << total << endl;
 }
 
-Usuario agregarUsuario(){
+Usuario agregarUsuario(vector<Usuario*> usuarios){
 	cout<<"Menú agregar";
 	cout<<endl;
 	cout<<"1. Cliente";
@@ -462,6 +463,12 @@ Usuario agregarUsuario(){
 			cout<<"Ingrese id: ";
 			cout<<endl;
 			cin>>id;
+			bool cont = existeIdentidad(usuarios, id);
+			while (cont == true) {
+				cout << "ID invalido, ingrese ID de nuevo!" << endl;
+				cin >> id;
+				cont = existeIdentidad(usuarios, id);
+			}
 			string telefono;
 			cout<<"Ingrese telefono: ";
 			cout<<endl;
@@ -503,6 +510,12 @@ Usuario agregarUsuario(){
 			cout<<"Ingrese id: ";
 			cout<<endl;
 			cin>>id;
+			bool cont = existeIdentidad(usuarios, id);
+			while (cont == true) {
+				cout << "ID invalido, ingrese ID de nuevo!" << endl;
+				cin >> id;
+				cont = existeIdentidad(usuarios, id);
+			}
 			string telefono;
 			cout<<"Ingrese telefono: ";
 			cout<<endl;
@@ -548,6 +561,12 @@ Usuario agregarUsuario(){
 			cout<<"Ingrese id: ";
 			cout<<endl;
 			cin>>id;
+			bool cont = existeIdentidad(usuarios, id);
+			while (cont == true) {
+				cout << "ID invalido, ingrese ID de nuevo!" << endl;
+				cin >> id;
+				cont = existeIdentidad(usuarios, id);
+			}
 			string telefono;
 			cout<<"Ingrese telefono: ";
 			cout<<endl;
@@ -597,6 +616,12 @@ Usuario agregarUsuario(){
 			cout<<"Ingrese id: ";
 			cout<<endl;
 			cin>>id;
+			bool cont = existeIdentidad(usuarios, id);
+			while (cont == true) {
+				cout << "ID invalido, ingrese ID de nuevo!" << endl;
+				cin >> id;
+				cont = existeIdentidad(usuarios, id);
+			}
 			string telefono;
 			cout<<"Ingrese telefono: ";
 			cout<<endl;
@@ -638,6 +663,12 @@ Usuario agregarUsuario(){
 			cout<<"Ingrese id: ";
 			cout<<endl;
 			cin>>id;
+			bool cont = existeIdentidad(usuarios, id);
+			while (cont == true) {
+				cout << "ID invalido, ingrese ID de nuevo!" << endl;
+				cin >> id;
+				cont = existeIdentidad(usuarios, id);
+			}
 			string telefono;
 			cout<<"Ingrese telefono: ";
 			cout<<endl;
@@ -893,4 +924,16 @@ void guardarArchivo(vector<Usuario*> Usuarios){
 	archivo.open("Meseros.txt",ios::out);
 	archivo<<Meseros;
 	archivo.close();
+}
+
+bool existeIdentidad(vector<Usuario*> Usuarios, string Identidad){
+	bool esta=false;
+	for (int i = 0; i < Usuarios.size(); ++i)
+	{
+		if ((Usuarios[i]->getId()).compare(Identidad)==0)
+		{
+			esta=true;
+		}
+	}
+	return esta;
 }
