@@ -90,8 +90,7 @@ int main() {
 						while (resp2 < 1 || resp2 > 2) {
 							cout << "Opcion invalida, ingrese su opcion de nuevo." << endl;
 							cin >> resp2;
-						}
-						if (resp2 == 1)
+						 						if (resp2 == 1)
 						{
 							cout << "Ingrese el rating del 1 - 5 que desea darle al restaurante: " << endl;
 							int rating;
