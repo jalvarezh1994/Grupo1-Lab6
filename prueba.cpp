@@ -146,7 +146,12 @@ int main() {
 								cout << "Usuario agregado exitosamente!" << endl;
 							} else if (resp3 == 2)
 							{
-								usuarios = eliminarUsuario(usuarios, userM);
+								if (usuarios.size() > 1)
+								{
+									usuarios = eliminarUsuario(usuarios, userM);
+								} else {
+									cout << "No hay usuarios!" << endl;
+								}
 							} else if (resp3 == 3)
 							{
 								cout << "Que desea hacer?" << endl;
@@ -394,7 +399,7 @@ int main() {
 		}
 	}
 
-	//
+	guardarArchivo(usuarios);
 	return 0;
 }
 
