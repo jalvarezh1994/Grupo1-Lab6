@@ -23,6 +23,7 @@ int main(){
 	Mesero m("jalvarez","Jorge","asdf",23,"0801","98654",5,15.5);
 	u.push_back(&m);
 	guardarArchivo(u);
+	cout<<cantPersonal(u);
 }
 
 vector<Usuario*> eliminarUsuario(vector<Usuario*> usuarios){
@@ -31,6 +32,23 @@ vector<Usuario*> eliminarUsuario(vector<Usuario*> usuarios){
 	cin>>i;
 	usuarios.erase(usuarios.begin()+i);
 	return usuarios;
+}
+
+double promedio(vector<Usuarios> Usuarios){
+	int cantPersonal=0;
+	double suma=0;
+	double promedio;
+	for (int i = 0; i < Usuarios.size(); ++i)
+	{
+		if (dynamic_cast<Personal>(Usuarios[i]))
+		{	
+			Personal temp=dynamic_cast<Personal>(Usuarios[i]);
+			suma+=temp.getSueldo();
+			cantPersonal++;
+		}
+	}
+	promedio=suma/cantPersonal;
+	return cantPersonal;
 }
 
 void guardarArchivo(vector<Usuario*> Usuarios){
