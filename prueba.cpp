@@ -913,19 +913,16 @@ void guardarArchivo(vector<Usuario*> Usuarios){
 	string nombreArchivo;
 	archivo.open("Clientes.txt",ios::out);
 	archivo<<Clientes;
-	archivo.close();
-	archivo.open("Administradores.txt",ios::out);
-	archivo<<Administradores;
-	archivo.close();
+	
 	archivo.open("Chefs.txt",ios::out);
 	archivo<<Chefs;
-	archivo.close();
+	
 	archivo.open("Administradores.txt",ios::out);
 	archivo<<Administradores;
-	archivo.close();
+	//archivo.close();
 	archivo.open("Lavaplatos.txt",ios::out);
 	archivo<<Lavaplatoss;
-	archivo.close();
+	//archivo.close();
 	archivo.open("Meseros.txt",ios::out);
 	archivo<<Meseros;
 	archivo.close();
