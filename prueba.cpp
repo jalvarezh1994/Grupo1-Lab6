@@ -15,7 +15,9 @@ using namespace std;
 int menu();
 void promedioClientes(vector<Usuario*>);
 Usuario agregarUsuario();
-vector<Usuario*> eliminarUsuario(vector<Usuario*>);
+vector<Usuario*> eliminarUsuario(vector<Usuario*>, int);
+double aumentarS(double);
+double decrementarS(double);
 
 int main() {
 	vector<Usuario*> usuarios;
@@ -138,10 +140,68 @@ int main() {
 								cout << "Usuario agregado exitosamente!" << endl;
 							} else if (resp3 == 2)
 							{
-								usuarios = eliminarUsuario(usuarios);
+								usuarios = eliminarUsuario(usuarios, userM);
 							} else if (resp3 == 3)
 							{
-								/* code */
+								cout << "Que desea hacer?" << endl;
+								cout << "1) Aumentar" << endl;
+								cout << "2) Decrementar" << endl;
+								int resP2;
+								cin >> resP2;
+								while (resP2 < 1 || resP2 > 2) {
+									cout << "Opcion invalida, ingrese su opcion de nuevo." << endl;
+									cin >> resP2;
+								}
+								if (resP2 == 1)
+								{
+									cout << "A quien le desea aumentar el salario?" << endl;
+									for (int i = 0; i < usuarios.size(); ++i)
+									{
+										if (i != userM)
+										{
+											cout << i << ") " << usuarios.at(i) -> getNombre() << endl;
+										}
+									}
+									int resP3;
+									cin >> resP3;
+									while (resP3 < 1 || resP3 > 2) {
+										cout << "Opcion invalida, ingrese su opcion de nuevo." << endl;
+										cin >> resP3;
+									}
+									if (dynamic_cast<Personal*>(usuarios.at(resP3)))
+									{
+										Personal* tempo = dynamic_cast<Personal*>(usuarios.at(resP3));
+										tempo -> setSueldo(aumentarS(tempo -> getSueldo()));
+										usuarios.at(resP3) = tempo;
+										cout << "El salario fue aumentado exitosamente!" << endl;
+									} else {
+										cout << "Este usuario no tiene salario!" << endl;
+									}
+								} else {
+									cout << "A quien le desea decrementar el salario?" << endl;
+									for (int i = 0; i < usuarios.size(); ++i)
+									{
+										if (i != userM)
+										{
+											cout << i << ") " << usuarios.at(i) -> getNombre() << endl;
+										}
+									}
+									int resP3;
+									cin >> resP3;
+									while (resP3 < 1 || resP3 > 2) {
+										cout << "Opcion invalida, ingrese su opcion de nuevo." << endl;
+										cin >> resP3;
+									}
+									if (dynamic_cast<Personal*>(usuarios.at(resP3)))
+									{
+										Personal* tempo = dynamic_cast<Personal*>(usuarios.at(resP3));
+										tempo -> setSueldo(aumentarS(tempo -> getSueldo()));
+										usuarios.at(resP3) = tempo;
+										cout << "El salario fue decrementado exitosamente!" << endl;
+									} else {
+										cout << "Este usuario no tiene salario!" << endl;
+									}
+								}
 							} else if (resp3 == 4)
 							{
 								/* code */
@@ -152,7 +212,7 @@ int main() {
 							{
 								/* code */
 							} else {
-
+								seguir2 = false;
 							}
 
 						} else if (dynamic_cast<Chef*>(usuarios.at(userM)))
@@ -397,6 +457,10 @@ Usuario agregarUsuario(){
 			cout<<"Ingrese estrellas: ";
 			cout<<endl;
 			cin>>estrellas;
+			while (estrellas < 1 || estrellas > 5) {
+				cout << "Numero invalido, ingrese su respuesta de nuevo!" << endl;
+				cin >> estrellas;
+			}
 			Cliente temporal(username,nombre,password,edad,id,telefono,direccion,estrellas);
 			return temporal;
 			break;
@@ -435,7 +499,7 @@ Usuario agregarUsuario(){
 			cout<<endl;
 			cin>>despedidos;
 			int aniocontratado;
-			cout<<"Ingrese aniocontratado: ";
+			cout<<"Ingrese año en que fue contratado: ";
 			cout<<endl;
 			cin>>aniocontratado;
 			double sueldo;
@@ -473,20 +537,24 @@ Usuario agregarUsuario(){
 			cin>>telefono;
 			string platillofavorito;
 			int aniocontratado;
-			cout<<"Ingrese aniocontratado: ";
+			cout<<"Ingrese año en que fue contratado: ";
 			cout<<endl;
 			cin>>aniocontratado;
 			double sueldo;
 			cout<<"Ingrese sueldo: ";
 			cout<<endl;
 			cin>>sueldo;
-			cout<<"Ingrese platillofavorito: ";
+			cout<<"Ingrese platillo favorito: ";
 			cout<<endl;
 			cin>>platillofavorito;
 			int rating;
 			cout<<"Ingrese rating: ";
 			cout<<endl;
 			cin>>rating;
+			while (rating < 1 || rating > 5) {
+				cout << "Numero invalido, ingrese su respuesta de nuevo!" << endl;
+				cin >> rating;
+			}
 			Chef temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo,platillofavorito,rating);
 			return temporal;
 			break;
@@ -518,7 +586,7 @@ Usuario agregarUsuario(){
 			cin>>telefono;
 			double motivacion;
 			int aniocontratado;
-			cout<<"Ingrese aniocontratado: ";
+			cout<<"Ingrese año en que fue contratado: ";
 			cout<<endl;
 			cin>>aniocontratado;
 			double sueldo;
@@ -558,7 +626,7 @@ Usuario agregarUsuario(){
 			cout<<endl;
 			cin>>telefono;
 			int aniocontratado;
-			cout<<"Ingrese aniocontratado: ";
+			cout<<"Ingrese año en que fue contratado:  ";
 			cout<<endl;
 			cin>>aniocontratado;
 			double sueldo;
@@ -572,12 +640,15 @@ Usuario agregarUsuario(){
 	}
 }
 
-vector<Usuario*> eliminarUsuario(vector<Usuario*> usuarios){
+vector<Usuario*> eliminarUsuario(vector<Usuario*> usuarios, int pos){
 	int i;
 	cout<<"Ingrese la posición del usuario que desea eliminar"<<endl;
 	for (int i = 0; i < usuarios.size(); ++i)
 	{
-		cout << i << ") " << usuarios.at(i) -> getNombre() << endl;
+		if (i != pos)
+		{
+			cout << i << ") " << usuarios.at(i) -> getNombre() << endl;
+		}
 	}
 	cin>>i;
 	while (i < 0 || i > usuarios.size()) {
@@ -585,5 +656,26 @@ vector<Usuario*> eliminarUsuario(vector<Usuario*> usuarios){
 		cin >> i;
 	}
 	usuarios.erase(usuarios.begin()+i);
+	cout << "Usuario borrado exitosamente!" << endl;
 	return usuarios;
+}
+
+double aumentarS(double salario) {
+	cout << "Ingrese el porcentaje de cambio en la infalcion: " << endl;
+	double cambio, aumento, total;
+	cin >> cambio;
+	cambio = cambio / 100;
+	aumento = salario * cambio;
+	total = salario + aumento;
+	return total;
+}
+
+double decrementarS(double salario) {
+	cout << "Ingrese el porcentaje de cambio en la infalcion: " << endl;
+	double cambio, decremento, total;
+	cin >> cambio;
+	cambio = cambio / 100;
+	decremento = salario * cambio;
+	total = salario - decremento;
+	return total;
 }
