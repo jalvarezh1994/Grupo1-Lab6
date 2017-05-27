@@ -18,6 +18,8 @@ Usuario agregarUsuario();
 vector<Usuario*> eliminarUsuario(vector<Usuario*>, int);
 double aumentarS(double);
 double decrementarS(double);
+vector<int> menorS(vector<Usuario*>);
+vector<int> mayorS(vector<Usuario*>);
 
 int main() {
 	vector<Usuario*> usuarios;
@@ -204,10 +206,20 @@ int main() {
 								}
 							} else if (resp3 == 4)
 							{
-								/* code */
+								vector<int> menores = menorS(usuarios);
+								cout << "Los usuario(s) con menor saldo es/son: " << endl;
+								for (int i = 0; i < menores.size(); ++i)
+								{
+									cout << i << ") " << usuarios.at(menores.at(i)) -> getNombre() << endl;
+								}
 							} else if (resp3 == 5)
 							{
-								/* code */
+								vector<int> mayores = mayorS(usuarios);
+								cout << "Los usuario(s) con mayor saldo es/son: " << endl;
+								for (int i = 0; i < mayores.size(); ++i)
+								{
+									cout << i << ") " << usuarios.at(mayores.at(i)) -> getNombre() << endl;
+								}
 							} else if (resp3 == 6)
 							{
 								/* code */
@@ -377,6 +389,7 @@ int main() {
 		}
 	}
 
+	//
 	return 0;
 }
 
@@ -678,4 +691,82 @@ double decrementarS(double salario) {
 	decremento = salario * cambio;
 	total = salario - decremento;
 	return total;
+}
+
+vector<int> menorS(vector<Usuario*> usuarios) {
+	double menor;
+	int pos;
+	Personal* tempo;
+	for (int i = 0; i < usuarios.size(); ++i)
+	{
+		if (dynamic_cast<Personal*>(usuarios.at(i)))
+		{
+			tempo = dynamic_cast<Personal*>(usuarios.at(i));
+			if (i == 0)
+			{
+				menor = tempo -> getSueldo();
+				pos = i;
+			} else {
+				if (tempo -> getSueldo() < menor)
+				{
+					menor = tempo -> getSueldo();
+					pos = i;
+				}
+			}
+		}
+	}
+	vector<int> menores;
+	menores.push_back(pos);
+	for (int i = 0; i < usuarios.size(); ++i)
+	{
+		if (dynamic_cast<Personal*>(usuarios.at(i)) && i != pos)
+		{
+			tempo = dynamic_cast<Personal*>(usuarios.at(i));
+			if (tempo -> getSueldo() == menor)
+			{
+				menores.push_back(i);
+			}
+		}
+	}
+
+	return menores;
+}
+
+vector<int> mayorS(vector<Usuario*> usuarios) {
+	double mayor;
+	int pos;
+	Personal* tempo;
+	for (int i = 0; i < usuarios.size(); ++i)
+	{
+		if (dynamic_cast<Personal*>(usuarios.at(i)))
+		{
+			tempo = dynamic_cast<Personal*>(usuarios.at(i));
+			if (i == 0)
+			{
+				mayor = tempo -> getSueldo();
+				pos = i;
+			} else {
+				if (tempo -> getSueldo() > mayor)
+				{
+					mayor = tempo -> getSueldo();
+					pos = i;
+				}
+			}
+		}
+	}
+	vector<int> mayores;
+	mayores.push_back(pos);
+	for (int i = 0; i < usuarios.size(); ++i)
+	{
+		if (dynamic_cast<Personal*>(usuarios.at(i)) && i != pos)
+		{
+			tempo = dynamic_cast<Personal*>(usuarios.at(i));
+			if (tempo -> getSueldo() == mayor)
+			{
+				mayores.push_back(i);
+			}
+		}
+	}
+
+	return mayores;
 }
