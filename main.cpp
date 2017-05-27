@@ -153,3 +153,15 @@ void guardarArchivo(vector<Usuario*> Usuarios){
 	archivo<<Meseros;
 	archivo.close();
 }
+
+bool existeIdentidad(vector<Usuario*> Usuarios, string Identidad){
+	bool esta=false;
+	for (int i = 0; i < Usuarios.size(); ++i)
+	{
+		if ((Usuarios[i]->getId()).compare(Identidad)==0)
+		{
+			esta=true;
+		}
+	}
+	return esta;
+}
