@@ -14,6 +14,8 @@ using namespace std;
 
 int menu();
 void promedioClientes(vector<Usuario*>);
+Usuario agregarUsuario();
+vector<Usuario*> eliminarUsuario(vector<Usuario*>);
 
 int main() {
 	vector<Usuario*> usuarios;
@@ -49,7 +51,6 @@ int main() {
 
 					if (user == true && pass == true)
 					{
-						i = usuarios.size();
 						userM = i;
 						enter = true;
 						enter2 = true;
@@ -113,7 +114,46 @@ int main() {
 						if (dynamic_cast<Administrador*>(usuarios.at(userM)))
 						{
 							Administrador* temp2 = dynamic_cast<Administrador*>(usuarios.at(userM));
+							cout << "Que desea hacer?" << endl;
+							cout << "1) Agregar Usuario" << endl;
+							cout << "2) Eliminar Usuario" << endl;
+							cout << "3) Aumentar o Decrementar de acuerdo de la inflacion" << endl;
+							cout << "4) Imprimir usuario(s) con el menor salario" << endl;
+							cout << "5) Imprimir usuario(s) con el mayor salario" << endl;
+							cout << "6) Conseguir promedio de los salarios" << endl;
+							cout << "7) Salir" << endl;
+							int resp3;
+							cin >> resp3;
+							while (resp3 < 1 || resp3 > 7) {
+								cout << "Opcion invalida, ingrese su opcion de nuevo." << endl;
+								cin >> resp3;
+							}
 
+							if (resp3 == 1)
+							{
+								Usuario a = agregarUsuario();
+								Usuario* ptra = new Usuario();
+								*ptra = a;
+								usuarios.push_back(ptra);
+								cout << "Usuario agregado exitosamente!" << endl;
+							} else if (resp3 == 2)
+							{
+								usuarios = eliminarUsuario(usuarios);
+							} else if (resp3 == 3)
+							{
+								/* code */
+							} else if (resp3 == 4)
+							{
+								/* code */
+							} else if (resp3 == 5)
+							{
+								/* code */
+							} else if (resp3 == 6)
+							{
+								/* code */
+							} else {
+
+							}
 
 						} else if (dynamic_cast<Chef*>(usuarios.at(userM)))
 						{
@@ -304,4 +344,246 @@ void promedioClientes(vector<Usuario*> usuarios) {
 	}
 	total = total / cont;
 	cout << "El numero de estrellas del restaurante es de: " << total << endl;
+}
+
+Usuario agregarUsuario(){
+	cout<<"Menú agregar";
+	cout<<endl;
+	cout<<"1. Cliente";
+	cout<<endl;
+	cout<<"2. Administrador";
+	cout<<endl;
+	cout<<"3. Chef";
+	cout<<endl;
+	cout<<"4. Lavaplatos";
+	cout<<endl;
+	cout<<"5. Mesero";
+	cout<<endl;
+	int opcAgregar;
+	cout<<"Ingrese la opción: ";
+	cout<<endl;
+	cin>>opcAgregar;
+	switch(opcAgregar){
+		case 1:{
+			string username;
+			cout<<"Ingrese username: ";
+			cout<<endl;
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cout<<endl;
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cout<<endl;
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cout<<endl;
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cout<<endl;
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cout<<endl;
+			cin>>telefono;
+			string direccion;
+			cout<<"Ingrese direccion: ";
+			cout<<endl;
+			cin>>direccion;
+			int estrellas;
+			cout<<"Ingrese estrellas: ";
+			cout<<endl;
+			cin>>estrellas;
+			Cliente temporal(username,nombre,password,edad,id,telefono,direccion,estrellas);
+			return temporal;
+			break;
+		}
+		case 2:{
+			string username;
+			cout<<"Ingrese username: ";
+			cout<<endl;
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cout<<endl;
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cout<<endl;
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cout<<endl;
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cout<<endl;
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cout<<endl;
+			cin>>telefono;
+			int contratados;
+			cout<<"Ingrese contratados: ";
+			cout<<endl;
+			cin>>contratados;
+			int despedidos;
+			cout<<"Ingrese despedidos: ";
+			cout<<endl;
+			cin>>despedidos;
+			int aniocontratado;
+			cout<<"Ingrese aniocontratado: ";
+			cout<<endl;
+			cin>>aniocontratado;
+			double sueldo;
+			cout<<"Ingrese sueldo: ";
+			cout<<endl;
+			cin>>sueldo;
+			Administrador temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo,contratados,despedidos);
+			return temporal;
+			break;
+		}
+		case 3:{
+			string username;
+			cout<<"Ingrese username: ";
+			cout<<endl;
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cout<<endl;
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cout<<endl;
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cout<<endl;
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cout<<endl;
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cout<<endl;
+			cin>>telefono;
+			string platillofavorito;
+			int aniocontratado;
+			cout<<"Ingrese aniocontratado: ";
+			cout<<endl;
+			cin>>aniocontratado;
+			double sueldo;
+			cout<<"Ingrese sueldo: ";
+			cout<<endl;
+			cin>>sueldo;
+			cout<<"Ingrese platillofavorito: ";
+			cout<<endl;
+			cin>>platillofavorito;
+			int rating;
+			cout<<"Ingrese rating: ";
+			cout<<endl;
+			cin>>rating;
+			Chef temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo,platillofavorito,rating);
+			return temporal;
+			break;
+		}
+		case 4:{
+			string username;
+			cout<<"Ingrese username: ";
+			cout<<endl;
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cout<<endl;
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cout<<endl;
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cout<<endl;
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cout<<endl;
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cout<<endl;
+			cin>>telefono;
+			double motivacion;
+			int aniocontratado;
+			cout<<"Ingrese aniocontratado: ";
+			cout<<endl;
+			cin>>aniocontratado;
+			double sueldo;
+			cout<<"Ingrese sueldo: ";
+			cout<<endl;
+			cin>>sueldo;
+			cout<<"Ingrese motivacion: ";
+			cout<<endl;
+			cin>>motivacion;
+			Lavaplatos temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo,motivacion);
+			return temporal;
+			break;
+		}
+		case 5:{
+			string username;
+			cout<<"Ingrese username: ";
+			cout<<endl;
+			cin>>username;
+			string password;
+			string nombre;
+			cout<<"Ingrese nombre: ";
+			cout<<endl;
+			cin>>nombre;
+			cout<<"Ingrese password: ";
+			cout<<endl;
+			cin>>password;
+			int edad;
+			cout<<"Ingrese edad: ";
+			cout<<endl;
+			cin>>edad;
+			string id;
+			cout<<"Ingrese id: ";
+			cout<<endl;
+			cin>>id;
+			string telefono;
+			cout<<"Ingrese telefono: ";
+			cout<<endl;
+			cin>>telefono;
+			int aniocontratado;
+			cout<<"Ingrese aniocontratado: ";
+			cout<<endl;
+			cin>>aniocontratado;
+			double sueldo;
+			cout<<"Ingrese sueldo: ";
+			cout<<endl;
+			cin>>sueldo;
+			Mesero temporal(username,nombre,password,edad,id,telefono,aniocontratado,sueldo);
+			return temporal;
+			break;
+		}
+	}
+}
+
+vector<Usuario*> eliminarUsuario(vector<Usuario*> usuarios){
+	int i;
+	cout<<"Ingrese la posición del usuario que desea eliminar"<<endl;
+	for (int i = 0; i < usuarios.size(); ++i)
+	{
+		cout << i << ") " << usuarios.at(i) -> getNombre() << endl;
+	}
+	cin>>i;
+	while (i < 0 || i > usuarios.size()) {
+		cout << "Numero invalido, ingrese su opcion de nuevo!" << endl;
+		cin >> i;
+	}
+	usuarios.erase(usuarios.begin()+i);
+	return usuarios;
 }
